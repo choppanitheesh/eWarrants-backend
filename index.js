@@ -16,7 +16,7 @@ const Warranty = require("./models/Warranty");
 const app = express();
 app.use(cors());
 app.use(express.json());
-
+app.set("trust proxy", 1);
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
