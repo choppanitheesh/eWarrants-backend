@@ -8,8 +8,22 @@ const { NotFoundError, BadRequestError } = require("../utils/errorResponse");
 const User = require("../models/User");
 
 // Configure the email transporter
+// OLD CODE (Delete this):
+/*
 const transporter = nodemailer.createTransport({
   service: "gmail",
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
+  },
+});
+*/
+
+// NEW CODE (Paste this):
+const transporter = nodemailer.createTransport({
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true, // Use SSL
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
